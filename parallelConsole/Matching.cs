@@ -9,9 +9,11 @@ public class Matching
         await Parallel.ForEachAsync(transactions, async (transaction, cancellationToken) =>
         {
             await Task.Delay(transaction.Duration, cancellationToken);
-            Console.WriteLine($"Transaction {transaction.Id} from {transaction.From} to {transaction.To} for {transaction.Amount} has completed.");
-            transaction.Status = "Completed";
-            count++;
+            await Task.Run(() => {
+                Console.WriteLine($"Transaction {transaction.Id} from {transaction.From} to {transaction.To} for {transaction.Amount} has completed.");
+                transaction.Status = "Completed";
+                count++;
+            });
         });
 
         Console.WriteLine($"Total transactions completed: {count}");

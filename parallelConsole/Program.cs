@@ -17,8 +17,8 @@ for (int i = 0; i < 150; i++)
         Id = i,
         From = "Account" + i,
         To = "Account" + (i + 1),
-        Amount = 100,
-        Duration = random.Next(50, 400),
+        Amount = random.Next(0, 120),
+        Duration = random.Next(50, 250),
         Date = DateTime.Now,
         Status = "Pending"
     });
